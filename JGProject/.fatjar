@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Mon Apr 10 22:23:39 CST 2017
+onejar.license.required=true
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=/Users/zhengquan/Desktop/\u5609\u679C/Jiaguo.jar
+manifest.mergeall=true
+manifest.mainclass=
+manifest.file=<createnew>
+jarname.isextern=true
+onejar.expand=
+excludes=<po|JiaGuoSDK>~com/~example/;<jar|org.apache.http.legacy.jar>;<jar|android-support-v4.jar>;<jar|commons-httpclient-3.1.jar>
+includes=

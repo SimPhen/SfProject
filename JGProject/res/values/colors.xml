@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="jgtransparent_background">#50000000</color>
+    
+    <color name="jgfont_black">#000000</color>
+    <color name="jgfont_white">#ffffff</color>
+    <color name="jgfont_orange">#f57900</color>
+    <color name="jgfont_somber">#196a83</color>
+     <color name="jgfontgrey_black">#4e4d4d</color>
+    
+    <color name="jggrey_black">#196a83</color>
+    <color name="jg_background">#e5e4e4</color>
+   <color name="jgother">#00000001</color>
+</resources>

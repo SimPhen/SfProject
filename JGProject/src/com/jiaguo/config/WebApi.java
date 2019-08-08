@@ -22,7 +22,7 @@ public class WebApi {
 	 */
 
 	//获取src接口
-	public static final String ACTION_SRC = HOST + "/Api/Index/GetSrc";
+	public static final String ACTION_SRC = HOST + "/Api/Index/GetSrcII";
 	
 	/**
 	 * 接口请求方式配置

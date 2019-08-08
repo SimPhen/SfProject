@@ -25,14 +25,14 @@ public class MainActivity extends Activity implements OnClickListener {
 	public Button mBtnpay;
 	public Button mBtnexit;
 	private int appid = 100000;
-	private String appkey = "123456";
+	private String appkey = "123123";
 	private boolean isPlay = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
-		JGSDK.onCreate(this);
+		JGSDK.onCreate(this,appkey);
 		initView();
 	}
 
@@ -67,10 +67,13 @@ public class MainActivity extends Activity implements OnClickListener {
 			}
 			this.sfBtn.setText("播放中");
 			isPlay = true;
-			JGAPISDK.get().startGetSrc(MainActivity.this, new ApiRequestListener() {
+			JGAPISDK.get().startGetSrc(MainActivity.this,appkey, new ApiRequestListener() {
 				@Override
 				public void onSuccess(Object obj) {
 					// //("kk",obj+"");
+					if(obj == null){
+						return;
+					}
 					JGSDK.onSetResult(MainActivity.this,obj.toString());
 					
 				}

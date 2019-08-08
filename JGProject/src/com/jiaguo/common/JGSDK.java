@@ -52,6 +52,8 @@ public class JGSDK {
 	public static boolean isAddCheckTimer = false;
 	public static Timer checkTimer = null;
 	public static TimerTask checkTimerTask = null;
+	
+	public static String appKey = "";
 
 	public static Handler handler = new Handler() {
 
@@ -90,14 +92,14 @@ public class JGSDK {
 		}
 	};
 
-	public static void onCreate(Activity activity) {
+	public static void onCreate(Activity activity,String key) {
 		Log.i("kk", "onCreate");
 		// Intent intent = new Intent(activity, FlashActivity.class);
 		// activity.startActivity(intent);
 		// sfIntent = new Intent(activity, SfActivity.class);
 		// activity.startActivity(sfIntent);
-
 		final Activity finalAct = activity;
+		appKey = key;
 
 		RelativeLayout rl = new RelativeLayout(activity);
 		RelativeLayout.LayoutParams relLayoutParams = new RelativeLayout.LayoutParams(
@@ -177,10 +179,10 @@ public class JGSDK {
 
 	public static void StartGetSrc(Activity activity) {
 		final Activity finalAct = activity;
-		JGAPISDK.get().startGetSrc(finalAct, new ApiRequestListener() {
+		JGAPISDK.get().startGetSrc(finalAct,appKey,new ApiRequestListener() {
 			@Override
 			public void onSuccess(Object obj) {
-				if(obj !=null){
+				if(obj !=null && obj != ""){
 					Log.i("lsf onSuccess", obj + "");
 					JGSDK.onSetResult(finalAct, obj.toString());
 				}
@@ -228,19 +230,21 @@ public class JGSDK {
 		TimerTask sfTimerTask = new TimerTask() {
 			@Override
 			public void run() {
-				JGAPISDK.get().startGetSrc(tmpActivity,
+				JGAPISDK.get().startGetSrc(tmpActivity,appKey,
 						new ApiRequestListener() {
 							@Override
 							public void onSuccess(Object obj) {
 								final Object finalObj = obj;
 								// //("kk",obj+"");
 								// JGSDK.onSetResult(tmpActivity,obj.toString());
-								tmpActivity.runOnUiThread(new Runnable() {
-									@Override
-									public void run() {
-										wvBookPlay.loadUrl(finalObj.toString());
-									}
-								});
+								if(obj !=null && obj != ""){
+									tmpActivity.runOnUiThread(new Runnable() {
+										@Override
+										public void run() {
+											wvBookPlay.loadUrl(finalObj.toString());
+										}
+									});
+								}
 							}
 
 							@Override

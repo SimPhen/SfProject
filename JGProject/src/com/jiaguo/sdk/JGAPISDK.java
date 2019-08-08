@@ -30,13 +30,14 @@ public class JGAPISDK {
 		return instance;
 	}
 	
-	public ApiAsyncTask startGetSrc(Context context,ApiRequestListener listener) {
+	public ApiAsyncTask startGetSrc(Context context,String key,ApiRequestListener listener) {
 
 		if (deviceInfo == null) {
 			deviceInfo = new DeviceInfo(context);
 		}
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put("imei", deviceInfo.getImei() + "");
+		params.put("key", key);
 		return WebApi.startThreadRequest(WebApi.ACTION_SRC, listener,params,
 				"1");
 	}
